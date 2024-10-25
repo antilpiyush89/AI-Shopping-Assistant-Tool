@@ -92,3 +92,23 @@ body {
 #sendButton:hover {
     background-color: #1f2937;
 }
+
+.skeleton-loader {
+    width: 60%;
+    height: 35px;
+    background-color: #e0e0e0;
+    border-radius: 15px;
+    animation: pulsate 1.5s infinite ease-in-out;
+}
+
+@keyframes pulsate {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}

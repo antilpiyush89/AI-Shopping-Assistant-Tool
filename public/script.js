@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (message) {
             addMessage(message, 'user-message');
             messageInput.value = '';
+            addLoader(); // Show loader
 
             fetch('/api/chat', {
                 method: 'POST',
@@ -28,10 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(response => response.json())
             .then(data => {
+                removeLoader(); // Remove loader
                 const aiResponse = data.data?.answer || 'Sorry, I couldn\'t process that.';
                 addMessage(aiResponse, 'ai-message');
             })
             .catch(error => {
+                removeLoader(); // Remove loader
                 console.error('Error:', error);
                 addMessage('An error occurred. Please try again.', 'ai-message');
             });
@@ -42,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const file = imageUpload.files[0];
         if (file) {
             addMessage('Uploading and analyzing image...', 'ai-message');
+            addLoader(); // Show loader
 
             const formData = new FormData();
             formData.append('image', file);
@@ -52,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(response => response.json())
             .then(data => {
+                removeLoader(); // Remove loader
                 console.log('API Response:', data); // Log the entire response for debugging
                 if (data.error) {
                     addMessage(`Error: ${data.error}`, 'ai-message');
@@ -61,9 +66,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
             .catch(error => {
+                removeLoader(); // Remove loader
                 console.error('Error:', error);
                 addMessage('An error occurred while uploading and analyzing the image.', 'ai-message');
             });
+        }
+    }
+
+    function addLoader() {
+        const loaderElement = document.createElement('div');
+        loaderElement.classList.add('loader', 'skeleton-loader');
+        loaderElement.innerHTML = '<div class="skeleton"></div>'; // Skeleton structure
+        chatMessages.appendChild(loaderElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function removeLoader() {
+        const loader = document.querySelector('.loader');
+        if (loader) {
+            loader.remove();
         }
     }
 
