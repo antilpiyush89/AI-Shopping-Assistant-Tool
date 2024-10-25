@@ -1,4 +1,4 @@
-1. To replicate on ur system do - npm install
+1. To replicate it on ur system do - npm install
 2. start sever - node index.js
 3. visit localhost:3000 to give prompts
 
