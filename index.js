@@ -45,7 +45,9 @@ async function submitQuery(apiKey, sessionId, query) {
         'plugin-1712327325',
         'plugin-1713962163',
         'plugin-1716119225',
-        'plugin-1716334779'
+        'plugin-1716334779',
+        'plugin-1722285968',
+        'plugin-1726688608' 
       ],
       responseMode: 'sync'
     })
@@ -114,8 +116,8 @@ app.post('/api/upload', upload.single('image'), async (req, res) => {
     const data = await response.json();
     console.log('OnDemand API Response:', data); // Log the entire response for debugging
     
-    // Clean up the uploaded file
-    fs.unlinkSync(req.file.path);
+    // Do not clean up the uploaded file to allow for future queries
+    // fs.unlinkSync(req.file.path); // This line is commented out
 
     // Ensure we're sending a consistent response format
     res.json({
