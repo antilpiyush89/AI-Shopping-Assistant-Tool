@@ -3,7 +3,7 @@
 3. visit localhost:3000 to give prompts
 
 - Landing Page
-![Screenshot 2024-10-26 024437](https://github.com/user-attachments/assets/e02dceee-a31a-4644-900b-4cc4996542b2)
+![Screenshot 2024-10-26 121908](https://github.com/user-attachments/assets/2e450e28-be35-43f0-b828-121ceb9869ec)
 - Prompt 
 ![Screenshot 2024-10-25 172125](https://github.com/user-attachments/assets/8a3d60db-0a42-4e8f-afcb-8a8bd9aadaab)
 - Extracting info from links and sending it to email
